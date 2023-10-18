@@ -14,6 +14,10 @@ final class AlertPresenter: AlertPresenterProtocol {
     private var alert: UIAlertController?
     private var action: UIAlertAction?
     
+    init(delegate: AlertPresenterDelegate) {
+        self.delegate = delegate
+    }
+    
     func show(model: AlertModel) {
         alert = UIAlertController(
             title: model.title,
@@ -23,7 +27,7 @@ final class AlertPresenter: AlertPresenterProtocol {
         action = UIAlertAction(title: model.buttonText, style: .default) {_ in 
             model.completion()
         }
-        
+        alert?.view.accessibilityIdentifier = "Этот раунд окончен!"
         alert?.addAction(action ?? UIAlertAction())
         delegate?.didPresent(alert: alert)
     }
