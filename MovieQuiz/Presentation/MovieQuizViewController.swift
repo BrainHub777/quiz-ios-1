@@ -8,7 +8,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     @IBOutlet private weak var noButton: UIButton!
     @IBOutlet private weak var yesButton: UIButton!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    private var presenter: MovieQuizPresenter!
+    private var presenter: MovieQuizPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +17,11 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     
     
     @IBAction private func yesButtonClicked(_ sender: Any) {
-        presenter.yesButtonClicked()
+        presenter?.yesButtonClicked()
     }
     
     @IBAction private func noButtonClicked(_ sender: Any) {
-        presenter.noButtonClicked()
+        presenter?.noButtonClicked()
     }
     
     func show(quiz step: QuizStepViewModel) {
